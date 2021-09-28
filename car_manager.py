@@ -8,6 +8,7 @@ MOVE_INCREMENT = 10
 class CarManager():
     def __init__(self):
         self.all_cars = [] # create a List of Cars
+        self.car_speed = STARTING_MOVE_DISTANCE
     
     def create_car(self):
         random_chance = random.randint(1, 6)
@@ -22,34 +23,9 @@ class CarManager():
         
     def move_cars(self):
         for car in self.all_cars:
-            car.backward(STARTING_MOVE_DISTANCE)
+            car.backward(self.car_speed)
+
+    def level_up(self):
+        self.car_speed += MOVE_INCREMENT
 
 
-
-
-# class CarManager(Turtle):
-#     def __init__(self):
-#         super().__init__()
-#         self.createCars()
-        
-        
-#     def createCars(self):
-#         """Create a Car on a random Y Position"""
-#         self.randomYPos = random.randint(-250, 250)
-#         self.randomColor = random.randrange(0, len(COLORS))
-
-#         self.penup()
-#         self.setheading(-180)
-#         self.shape("square")
-#         self.color(COLORS[self.randomColor])
-#         self.shapesize(stretch_len=2)
-#         self.goto(x=250 ,y=self.randomYPos)
-    
-#     def moveCars(self):
-#         """Move Cars at the Start with a Movement Speed of 5"""
-#         self.forward(STARTING_MOVE_DISTANCE)
-    
-#     # TODO 
-#     def nextLevel(self):
-#         """increase Car Movement Speed and increase the Amount of Cars"""
-#         pass
