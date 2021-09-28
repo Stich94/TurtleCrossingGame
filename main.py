@@ -5,14 +5,24 @@ from car_manager import CarManager
 from scoreboard import Scoreboard
 
 player = Player()
-cars = CarManager()
+car_manager = CarManager()
 screen = Screen()
 screen.setup(width=600, height=600)
 screen.tracer(0)
 
+loopCount = 0
+
 game_is_on = True
 while game_is_on:
+    # if loopCount % 6 == 0:
+    #     cars = CarManager()
     time.sleep(0.1)
     screen.update()
     screen.listen()
     screen.onkey(player.moveForward, "Up")
+    # loopCount += 1
+    car_manager.create_car()
+    car_manager.move_cars()
+    
+    
+    
